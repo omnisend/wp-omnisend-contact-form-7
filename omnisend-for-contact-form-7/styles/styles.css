@@ -1,0 +1,186 @@
+.omnisend-checkbox-label {
+	flex: 1 0 0;
+	color: var(--content-ashes-to-ashes, #1e2423);
+	font-feature-settings: "clig" off, "liga" off;
+	/* Content/Body Strong */
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px; /* 171.429% */
+}
+
+.omnisend-checkbox-description {
+	flex: 1 0 0;
+	color: var(--content-ashes-to-ashes, #1e2423);
+	font-feature-settings: "clig" off, "liga" off;
+	/* Content/Microcopy */
+	font-family: "Roboto", sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 16px; /* 133.333% */
+}
+.omnisend-checkbox-wrapper {
+	display: flex;
+	flex-direction: row;
+}
+
+.omnisend-checkbox-text-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+input.omnisend-checkbox {
+	width: 16px;
+	height: 16px;
+	margin: 4px 16px 0 0;
+	border-radius: 4px;
+	border: 1px solid var(--neutrals-dusty-dust, #b6b6b6);
+	background: var(--neutrals-coconut-white, #fff);
+}
+
+.omnisend-h4 {
+	color: #000;
+
+	font-feature-settings: "clig" off, "liga" off;
+	/* Heading/H4 */
+	font-family: "Roboto", sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 32px; /* 160% */
+}
+
+.omnisend-lead-strong {
+	color: #000;
+
+	font-feature-settings: "clig" off, "liga" off;
+	/* Content/Lead Strong */
+	font-family: "Roboto", sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 24px; /* 150% */
+}
+
+.omnisend-content-body {
+	max-width: 862px;
+	color: #000;
+
+	font-feature-settings: "clig" off, "liga" off;
+	/* Content/Body */
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 24px; /* 171.429% */
+}
+
+.omnisend-input-label {
+	align-self: stretch;
+	color: var(--content-ashes-to-ashes, #1e2423);
+	margin-bottom: 8px;
+	font-feature-settings: "clig" off, "liga" off;
+	/* Content/Body Strong */
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px; /* 171.429% */
+}
+
+select.omnisend-select {
+	display: flex;
+	padding: 8px 8px 8px 16px;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 16px;
+	align-self: stretch;
+	width: 100%;
+	border-radius: 8px;
+
+	color: var(--content-midnight-grey, #808080);
+	font-feature-settings: "clig" off, "liga" off;
+	/* Content/Body */
+	font-family: Roboto;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 24px; /* 171.429% */
+	border: 1px solid var(--neutrals-dusty-dust, #b6b6b6);
+	background: var(--neutrals-coconut-white, #fff);
+	background: #fff
+		url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E)
+		no-repeat right 5px top 55%;
+}
+
+.omnisend-content-body-strong {
+	color: #000;
+
+	font-feature-settings: "clig" off, "liga" off;
+	/* Content/Body Strong */
+	font-family: Roboto;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px; /* 171.429% */
+}
+
+div#omnisend-panel {
+	background-color: #fff !important;
+}
+
+.omnisend-notice {
+	display: flex;
+	width: 862px;
+	padding: 16px 24px;
+	align-items: flex-start;
+	gap: 16px;
+
+	border-radius: 8px;
+	background: var(--secondary-charleston-blue, #dbf1ff);
+	width: 90%;
+	display: flex;
+	flex-direction: row;
+}
+
+.omnisend-danger-notice {
+	background: var(--secondary-rose-bud, #ffe6e6);
+}
+
+.omnisend-notice-text-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 8px;
+}
+
+a.omnisend-link {
+	color: var(--content-bahama-bay, #35938f);
+	font-feature-settings: "clig" off, "liga" off;
+	/* Content/Underline/Body strong */
+	font-family: Roboto;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 24px; /* 171.429% */
+	text-decoration-line: underline;
+}
+
+.omnisend-margin-bottom-16 {
+	margin-bottom: 16px;
+}
+
+.omnisend-margin-bottom-40 {
+	margin-bottom: 40px;
+}
+
+.omnisend-margin-bottom-8 {
+	margin-bottom: 8px;
+}
+
+.omnisend-margin-bottom-24 {
+	margin-bottom: 24px;
+}
