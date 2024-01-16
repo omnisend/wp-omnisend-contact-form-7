@@ -1,4 +1,4 @@
-name: Release plugin
+name: Publish plugin
 
 on: [workflow_dispatch]
 jobs:
