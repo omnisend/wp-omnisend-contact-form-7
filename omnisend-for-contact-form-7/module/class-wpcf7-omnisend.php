@@ -5,11 +5,15 @@
  * @package OmnisendContactFrom7Plugin
  */
 
+use Omnisend\Public\V1\Contact;
+use Omnisend\Public\V1\Omnisend;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 class WPCF7_Omnisend {
+
 
 	private static $instance;
 
@@ -40,6 +44,10 @@ class WPCF7_Omnisend {
 			return; // service is not active, no need for other hooks.
 		}
 
+		if ( ! class_exists( 'Omnisend\Public\V1\Omnisend' ) ) {
+			return;
+		}
+
 		/** @var $contact_form WPCF7_ContactForm */
 		$form_id = $contact_form->id();
 
@@ -51,59 +59,77 @@ class WPCF7_Omnisend {
 			return; // form is not enabled for Omnisend.
 		}
 
-		$contact = new WPCF7_Omnisend_Contact();
-		$contact->add_tag( WPCF7_Omnisend_Utils::clean_up_tag( $contact_form->title() ) );
+		$contact = new Contact();
 
-		if ( ! empty( $form_meta_data->get_email_field_name() ) ) {
-			$contact->set_email( $posted_data[ $form_meta_data->get_email_field_name() ] );
+		$contact->add_tag( 'Contact Form 7' );
+		$contact->add_tag( $contact_form->title() );
+
+		$email = $form_meta_data->get_email_field_name();
+
+		if ( ! empty( $email ) && $email !== '---' ) {
+			$contact->set_email( $posted_data[ $email ] );
 		}
 
-		if ( ! empty( $form_meta_data->is_send_welcome_email_enabled() ) ) {
-			$contact->set_send_welcome_email( $form_meta_data->is_send_welcome_email_enabled() );
+		$is_welcome_email_enabled = $form_meta_data->is_send_welcome_email_enabled();
+		if ( ! empty( $is_welcome_email_enabled ) && $is_welcome_email_enabled !== '---' ) {
+			$contact->set_welcome_email( $form_meta_data->is_send_welcome_email_enabled() );
 		}
 
-		if ( ! empty( $form_meta_data->get_address_field_name() ) ) {
-			$contact->set_address( $posted_data[ $form_meta_data->get_address_field_name() ] );
+		$address = $form_meta_data->get_address_field_name();
+		if ( ! empty( $address ) && $address !== '---' ) {
+			$contact->set_address( $posted_data[ $address ] );
 		}
 
-		if ( ! empty( $form_meta_data->get_city_field_name() ) ) {
+		$city_name = $form_meta_data->get_city_field_name();
+		if ( ! empty( $city_name ) && $city_name !== '---' ) {
 			$contact->set_city( $posted_data[ $form_meta_data->get_city_field_name() ] );
 		}
 
-		if ( ! empty( $form_meta_data->get_state_field_name() ) ) {
-			$contact->set_state( $posted_data[ $form_meta_data->get_state_field_name() ] );
+		$state = $form_meta_data->get_state_field_name();
+		if ( ! empty( $state ) && $state !== '---' ) {
+			$contact->set_state( $posted_data[ $state ] );
 		}
 
-		if ( ! empty( $form_meta_data->get_country_field_name() ) ) {
-			$contact->set_country( $posted_data[ $form_meta_data->get_country_field_name() ] );
+		$country = $form_meta_data->get_country_field_name();
+		if ( ! empty( $country ) && $country !== '---' ) {
+			$contact->set_country( $posted_data[ $country ] );
 		}
 
-		if ( ! empty( $form_meta_data->get_postal_code_field_name() ) ) {
-			$contact->set_postal_code( $posted_data[ $form_meta_data->get_postal_code_field_name() ] );
+		$postal_code = $form_meta_data->get_postal_code_field_name();
+		if ( ! empty( $form_meta_data->$postal_code ) && $postal_code !== '---' ) {
+			$contact->set_postal_code( $posted_data[ $postal_code ] );
 		}
 
-		if ( ! empty( $form_meta_data->get_phone_field_name() ) ) {
-			$contact->set_phone( $posted_data[ $form_meta_data->get_phone_field_name() ] );
+		$phone = $form_meta_data->get_phone_field_name();
+		if ( ! empty( $phone ) && $phone !== '---' ) {
+			$contact->set_phone( $posted_data[ $phone ] );
 		}
 
-		if ( ! empty( $form_meta_data->get_birthday_field_name() ) ) {
-			$contact->set_birthday( $posted_data[ $form_meta_data->get_birthday_field_name() ] );
+		$birthday = $form_meta_data->get_birthday_field_name();
+		if ( ! empty( $birthday ) && $birthday !== '---' ) {
+			$contact->set_birthday( $posted_data[ $birthday ] );
 		}
 
-		if ( ! empty( $form_meta_data->get_first_name_field_name() ) ) {
-			$contact->set_first_name( $posted_data[ $form_meta_data->get_first_name_field_name() ] );
+		$first_name = $form_meta_data->get_first_name_field_name();
+		if ( ! empty( $first_name ) && $first_name !== '---' ) {
+			$contact->set_first_name( $posted_data[ $first_name ] );
 		}
 
-		if ( ! empty( $form_meta_data->get_last_name_field_name() ) ) {
-			$contact->set_last_name( $posted_data[ $form_meta_data->get_last_name_field_name() ] );
+		$last_name = $form_meta_data->get_last_name_field_name();
+		if ( ! empty( $last_name ) && $last_name !== '---' ) {
+			$contact->set_last_name( $posted_data[ $last_name ] );
 		}
 
-		if ( ! empty( $posted_data[ $form_meta_data->get_email_consent_field_name() ] ) ) {
+		$email_consent = $form_meta_data->get_email_consent_field_name();
+		if ( ! empty( $posted_data[ $email_consent ] ) && $email_consent !== '---' ) {
 			$contact->set_email_consent( 'plugin (contact form 7), form ID: ' . $form_id );
+			$contact->set_email_opt_in( 'plugin (contact form 7), form ID: ' . $form_id );
 		}
 
-		if ( ! empty( $posted_data[ $form_meta_data->get_phone_consent_field_name() ] ) ) {
+		$phone_consent = $form_meta_data->get_phone_consent_field_name();
+		if ( ! empty( $posted_data[ $phone_consent ] ) && $phone_consent !== '---' ) {
 			$contact->set_phone_consent( 'plugin (contact form 7), form ID: ' . $form_id );
+			$contact->set_phone_opt_in( 'plugin (contact form 7), form ID: ' . $form_id );
 		}
 
 		$form_tags = $contact_form->scan_form_tags();
@@ -136,16 +162,23 @@ class WPCF7_Omnisend {
 			$contact->add_custom_property( $safe_label, $value );
 		}
 
-		if ( ! $contact->is_valid() ) {
+		$response = Omnisend::get_client( WPCP7_OMNISEND_PLUGIN_NAME, WPCP7_OMNISEND_PLUGIN_VERSION )->create_contact( $contact );
+		if ( is_wp_error( $response ) ) {
+			error_log('Error in after_submission: ' . $response->get_error_message()); // phpcs:ignore
 			return;
 		}
 
-		$contact_id = $this->create_contact( $contact );
-		if ( ! $contact_id ) {
+		if ( ! is_string( $response ) ) {
+			error_log('Unexpected error. Please contact Omnisend support.'); // phpcs:ignore
 			return;
 		}
 
-		$this->enable_web_tracking( $contact_id );
+		if ( ! $response ) {
+			error_log('Empty response'); // phpcs:ignore
+			return;
+		}
+
+		$this->enable_web_tracking( $response );
 	}
 
 	/**
@@ -203,47 +236,11 @@ class WPCF7_Omnisend {
 
 		$panels['omnisend-panel'] = array(
 			'title'    => 'Omnisend',
-			'callback' => function ( $post ) { // phpcs:ignore
+			'callback' => function ($post) { // phpcs:ignore
 				require_once 'form-settings.php';
 			},
 		);
 		return $panels;
-	}
-
-	private function create_contact( $contact ): string {
-
-		$response = wp_remote_post(
-			'https://api.omnisend.com/v3/contacts',
-			array(
-				'body'    => wp_json_encode( $contact->to_array() ),
-				'headers' => array(
-					'Content-Type' => 'application/json',
-					'X-API-Key'    => WPCF7_Omnisend_Service::get_instance()->get_api_key(),
-				),
-				'timeout' => 10,
-			)
-		);
-
-		if ( is_wp_error( $response ) ) {
-			error_log( 'wp_remote_post error: ' . $response->get_error_message() ); // phpcs:ignore
-			return '';
-		}
-
-		$http_code = wp_remote_retrieve_response_code( $response );
-		if ( $http_code >= 400 ) {
-			$body = wp_remote_retrieve_body( $response );
-			error_log( "HTTP error: {$http_code} - " . wp_remote_retrieve_response_message( $response ) . " - {$body}" ); // phpcs:ignore
-			return '';
-		}
-
-		$body = wp_remote_retrieve_body( $response );
-		if ( ! $body ) {
-			return '';
-		}
-
-		$arr = json_decode( $body, true );
-
-		return ! empty( $arr['contactID'] ) ? $arr['contactID'] : '';
 	}
 
 	private function enable_web_tracking( $contact_id ) {

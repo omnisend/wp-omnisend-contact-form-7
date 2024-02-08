@@ -5,6 +5,8 @@
  * @package OmnisendContactFrom7Plugin
  */
 
+use Omnisend\Public\V1\Omnisend;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -13,7 +15,6 @@ class WPCF7_Omnisend_Service extends WPCF7_Service {
 
 
 	private static $instance;
-	private $api_key;
 
 	public static function get_instance() {
 		if ( empty( self::$instance ) ) {
@@ -23,9 +24,6 @@ class WPCF7_Omnisend_Service extends WPCF7_Service {
 		return self::$instance;
 	}
 
-	private function __construct() {
-		$this->api_key = get_option( 'omnisend_api_key', '' );
-	}
 
 	public function get_title() {
 		return 'Omnisend';
@@ -36,7 +34,7 @@ class WPCF7_Omnisend_Service extends WPCF7_Service {
 			return false;
 		}
 
-		return $this->api_key != '';
+		return Omnisend::is_connected();
 	}
 
 	public function get_categories() {
@@ -87,20 +85,21 @@ class WPCF7_Omnisend_Service extends WPCF7_Service {
 		}
 	}
 
-	public function get_api_key() {
-		return $this->api_key;
+	public function is_required_plugin_active(): bool {
+		return is_plugin_active( 'omnisend/class-omnisend-core-bootstrap.php' );
 	}
 
-	public function is_required_plugin_active(): bool {
-		return is_plugin_active( 'omnisend-connect/omnisend-woocommerce.php' );
+	public function is_required_plugin_updated(): bool {
+
+		return class_exists( 'Omnisend\Public\V1\Omnisend' );
 	}
 
 	private function display_setup() {
 		echo '<strong>To integrate your Contact Form 7 with Omnisend, complete these steps:</strong>
             <br />
             <br />
-            <li>Install the <a href="https://wordpress.org/plugins/omnisend-connect/">Email Marketing for WooCommerce by Omnisend</a> plugin</li>
-            <li>Connect your WooCommerce store to your Omnisend account</li>
+            <li>Install the <a href="https://wordpress.org/plugins/omnisend/">Email Marketing by Omnisend</a> plugin</li>
+            <li>Connect your WordPress site to your Omnisend account</li>
             <br />';
 
 		printf(
@@ -112,10 +111,13 @@ class WPCF7_Omnisend_Service extends WPCF7_Service {
 
 	private function check_setup(): void {
 		if ( ! $this->is_required_plugin_active() ) {
-			echo '<div class="notice notice-error"><p><strong>Error</strong>: <a href="https://wordpress.org/plugins/omnisend-connect/">Email Marketing for WooCommerce by Omnisend</a> plugin is not installed or activated</p></div>';
+			echo '<div class="notice notice-error"><p><strong>Error</strong>: <a href="https://wordpress.org/plugins/omnisend/">Email Marketing by Omnisend</a> plugin is not installed or activated</p></div>';
 			$this->display_setup();
-		} elseif ( empty( $this->api_key ) ) {
-			echo '<div class="notice notice-error"><p><strong>Error</strong>: WooCommerce store is not connected to your Omnisend account</p></div>';
+		} elseif ( ! $this->is_required_plugin_updated() ) {
+			echo '<div class="notice notice-error"><p><strong>Error</strong>:Your Email Marketing by Omnisend is not up to date. Please update plugins </p></div>';
+			$this->display_setup();
+		} elseif ( ! Omnisend::is_connected() ) {
+			echo '<div class="notice notice-error"><p><strong>Error</strong>: WordPress site is not connected to your Omnisend account</p></div>';
 			$this->display_setup();
 		} else {
 			echo '<div class="notice notice-success"><p><strong>Omnisend</strong> integration for Contact form 7 is set up!</p></div>';
