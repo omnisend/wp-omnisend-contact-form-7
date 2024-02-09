@@ -49,7 +49,7 @@ class WPCF7_Omnisend {
 		}
 
 		/** @var $contact_form WPCF7_ContactForm */
-		$form_id   = $contact_form->id();
+		$form_id = $contact_form->id();
 
 		$submission  = WPCF7_Submission::get_instance();
 		$posted_data = $submission->get_posted_data();
