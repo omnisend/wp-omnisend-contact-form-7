@@ -49,7 +49,8 @@ class WPCF7_Omnisend {
 		}
 
 		/** @var $contact_form WPCF7_ContactForm */
-		$form_id = $contact_form->id();
+		$form_id   = $contact_form->id();
+		$form_name = $contact_form->name();
 
 		$submission  = WPCF7_Submission::get_instance();
 		$posted_data = $submission->get_posted_data();
@@ -96,7 +97,7 @@ class WPCF7_Omnisend {
 		}
 
 		$postal_code = $form_meta_data->get_postal_code_field_name();
-		if ( ! empty( $form_meta_data->$postal_code ) && $postal_code !== '---' ) {
+		if ( ! empty( $postal_code ) && $postal_code !== '---' ) {
 			$contact->set_postal_code( $posted_data[ $postal_code ] );
 		}
 
@@ -122,14 +123,14 @@ class WPCF7_Omnisend {
 
 		$email_consent = $form_meta_data->get_email_consent_field_name();
 		if ( ! empty( $posted_data[ $email_consent ] ) && $email_consent !== '---' ) {
-			$contact->set_email_consent( 'plugin (contact form 7), form ID: ' . $form_id );
-			$contact->set_email_opt_in( 'plugin (contact form 7), form ID: ' . $form_id );
+			$contact->set_email_consent( 'plugin (contact form 7), form name(' . $form_name . ')' );
+			$contact->set_email_opt_in( 'plugin (contact form 7), form name(' . $form_name . ')' );
 		}
 
 		$phone_consent = $form_meta_data->get_phone_consent_field_name();
 		if ( ! empty( $posted_data[ $phone_consent ] ) && $phone_consent !== '---' ) {
-			$contact->set_phone_consent( 'plugin (contact form 7), form ID: ' . $form_id );
-			$contact->set_phone_opt_in( 'plugin (contact form 7), form ID: ' . $form_id );
+			$contact->set_phone_consent( 'plugin (contact form 7), form name(' . $form_name . ')' );
+			$contact->set_phone_opt_in( 'plugin (contact form 7), form name(' . $form_name . ')' );
 		}
 
 		$form_tags = $contact_form->scan_form_tags();
@@ -159,6 +160,7 @@ class WPCF7_Omnisend {
 			$safe_label = str_replace( array( ' ', '-' ), '_', $prop );
 			$safe_label = preg_replace( '/[^A-Za-z0-9_]/', '', $safe_label );
 			$safe_label = mb_strimwidth( $safe_label, 0, 128 );
+			$safe_label = 'contact_form_7_' . $safe_label;
 			$contact->add_custom_property( $safe_label, $value );
 		}
 
