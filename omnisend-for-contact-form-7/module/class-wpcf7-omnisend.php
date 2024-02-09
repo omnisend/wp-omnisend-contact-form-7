@@ -50,7 +50,6 @@ class WPCF7_Omnisend {
 
 		/** @var $contact_form WPCF7_ContactForm */
 		$form_id   = $contact_form->id();
-		$form_name = $contact_form->name();
 
 		$submission  = WPCF7_Submission::get_instance();
 		$posted_data = $submission->get_posted_data();
@@ -123,14 +122,14 @@ class WPCF7_Omnisend {
 
 		$email_consent = $form_meta_data->get_email_consent_field_name();
 		if ( ! empty( $posted_data[ $email_consent ] ) && $email_consent !== '---' ) {
-			$contact->set_email_consent( 'plugin (contact form 7), form name(' . $form_name . ')' );
-			$contact->set_email_opt_in( 'plugin (contact form 7), form name(' . $form_name . ')' );
+			$contact->set_email_consent( 'plugin (contact form 7), form id (' . $form_id . ')' );
+			$contact->set_email_opt_in( 'plugin (contact form 7), form id (' . $form_id . ')' );
 		}
 
 		$phone_consent = $form_meta_data->get_phone_consent_field_name();
 		if ( ! empty( $posted_data[ $phone_consent ] ) && $phone_consent !== '---' ) {
-			$contact->set_phone_consent( 'plugin (contact form 7), form name(' . $form_name . ')' );
-			$contact->set_phone_opt_in( 'plugin (contact form 7), form name(' . $form_name . ')' );
+			$contact->set_phone_consent( 'plugin (contact form 7), form id (' . $form_id . ')' );
+			$contact->set_phone_opt_in( 'plugin (contact form 7), form id (' . $form_id . ')' );
 		}
 
 		$form_tags = $contact_form->scan_form_tags();
