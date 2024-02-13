@@ -5,7 +5,7 @@ Tags: Contact Form 7, form, email marketing, web tracking, subscriber collection
 Requires at least: 4.7.0
 Tested up to: 6.4
 Requires PHP: 7.1
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -63,6 +63,10 @@ Read Omnisend [Terms of Use](https://www.omnisend.com/privacy/)
 7. Convert more visitors with highly-targeted landing pages
 
 == Changelog ==
+
+= 1.1.0 =
+
+* Update plugin to change dependency from Omnisend for Woo to Omnisend Wordpress.
 
 = 1.0.2 =
 
