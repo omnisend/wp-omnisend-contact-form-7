@@ -5,8 +5,8 @@
  * @package OmnisendContactFrom7Plugin
  */
 
-use Omnisend\Public\V1\Contact;
-use Omnisend\Public\V1\Omnisend;
+use Omnisend\SDK\V1\Contact;
+use Omnisend\SDK\V1\Omnisend;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -44,7 +44,7 @@ class WPCF7_Omnisend {
 			return; // service is not active, no need for other hooks.
 		}
 
-		if ( ! class_exists( 'Omnisend\Public\V1\Omnisend' ) ) {
+		if ( ! class_exists( 'Omnisend\SDK\V1\Omnisend' ) ) {
 			return;
 		}
 
@@ -164,22 +164,12 @@ class WPCF7_Omnisend {
 		}
 
 		$response = Omnisend::get_client( WPCP7_OMNISEND_PLUGIN_NAME, WPCP7_OMNISEND_PLUGIN_VERSION )->create_contact( $contact );
-		if ( is_wp_error( $response ) ) {
-			error_log('Error in after_submission: ' . $response->get_error_message()); // phpcs:ignore
+		if ( $response->get_wp_error()->has_errors() ) {
+			error_log( 'Error in after_submission: ' . $response->get_wp_error()->get_error_message()); // phpcs:ignore
 			return;
 		}
 
-		if ( ! is_string( $response ) ) {
-			error_log('Unexpected error. Please contact Omnisend support.'); // phpcs:ignore
-			return;
-		}
-
-		if ( ! $response ) {
-			error_log('Empty response'); // phpcs:ignore
-			return;
-		}
-
-		$this->enable_web_tracking( $response );
+		$this->enable_web_tracking( $response->get_contact_id() );
 	}
 
 	/**

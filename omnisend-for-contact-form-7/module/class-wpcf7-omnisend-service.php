@@ -5,7 +5,7 @@
  * @package OmnisendContactFrom7Plugin
  */
 
-use Omnisend\Public\V1\Omnisend;
+use Omnisend\SDK\V1\Omnisend;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -91,7 +91,7 @@ class WPCF7_Omnisend_Service extends WPCF7_Service {
 
 	public function is_required_plugin_updated(): bool {
 
-		return class_exists( 'Omnisend\Public\V1\Omnisend' );
+		return class_exists( 'Omnisend\SDK\V1\Omnisend' );
 	}
 
 	private function display_setup() {
