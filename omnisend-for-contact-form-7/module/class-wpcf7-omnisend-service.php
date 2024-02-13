@@ -90,7 +90,6 @@ class WPCF7_Omnisend_Service extends WPCF7_Service {
 	}
 
 	public function is_required_plugin_updated(): bool {
-
 		return class_exists( 'Omnisend\SDK\V1\Omnisend' );
 	}
 
