@@ -35,7 +35,6 @@ class WPCF7_Omnisend_Bootstrap {
 			return;
 		}
 
-		require_once 'module/class-wpcf7-omnisend-utils.php';
 		require_once 'module/class-wpcf7-omnisend-service.php';
 		require_once 'module/class-wpcf7-omnisend.php';
 		require_once 'module/class-wpcf7-omnisend-form-meta-data.php';
