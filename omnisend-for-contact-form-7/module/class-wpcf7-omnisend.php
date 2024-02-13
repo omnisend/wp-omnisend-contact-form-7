@@ -72,7 +72,7 @@ class WPCF7_Omnisend {
 
 		$is_welcome_email_enabled = $form_meta_data->is_send_welcome_email_enabled();
 		if ( ! empty( $is_welcome_email_enabled ) && $is_welcome_email_enabled !== '---' ) {
-			$contact->set_welcome_email( $form_meta_data->is_send_welcome_email_enabled() );
+			$contact->set_welcome_email( true );
 		}
 
 		$address = $form_meta_data->get_address_field_name();
@@ -82,7 +82,7 @@ class WPCF7_Omnisend {
 
 		$city_name = $form_meta_data->get_city_field_name();
 		if ( ! empty( $city_name ) && $city_name !== '---' ) {
-			$contact->set_city( $posted_data[ $form_meta_data->get_city_field_name() ] );
+			$contact->set_city( $posted_data[ $city_name ] );
 		}
 
 		$state = $form_meta_data->get_state_field_name();
@@ -156,11 +156,8 @@ class WPCF7_Omnisend {
 				continue;
 			}
 
-			$safe_label = str_replace( array( ' ', '-' ), '_', $prop );
-			$safe_label = preg_replace( '/[^A-Za-z0-9_]/', '', $safe_label );
-			$safe_label = mb_strimwidth( $safe_label, 0, 128 );
-			$safe_label = 'contact_form_7_' . $safe_label;
-			$contact->add_custom_property( $safe_label, $value );
+			$name = 'contact_form_7_' . $prop;
+			$contact->add_custom_property( $name, $value );
 		}
 
 		$response = Omnisend::get_client( WPCP7_OMNISEND_PLUGIN_NAME, WPCP7_OMNISEND_PLUGIN_VERSION )->create_contact( $contact );
