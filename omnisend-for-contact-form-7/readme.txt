@@ -5,7 +5,7 @@ Tags: Contact Form 7, form, email marketing, web tracking, subscriber collection
 Requires at least: 4.7.0
 Tested up to: 6.4
 Requires PHP: 7.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,7 +15,7 @@ Email Marketing, Newsletter, Email Automation, Forms, Pop Up, SMS by Omnisend
 
 The Omnisend for Contact Form 7 Add-On connects Contact Form 7 to Omnisend, automatically sending form data and contact information to Omnisend. This makes it simple to segment your contacts and send them personalized emails.
 
-When used with the Omnisend for WooCommerce plugin, you can track what customers do on your site and send automated emails—such as to remind them they left items in their cart, welcome new subscribers, and confirm a new order.
+When used with the Omnisend plugin, you can track what customers do on your site and send automated emails—such as to remind them they left items in their cart, welcome new subscribers, and confirm a new order.
 
 Using Contact Form 7 Omnisend Add-On, you'll gain access to the Contact Form 7 easy-to-use interface. You can create new forms, edit forms, and change their statuses. You are also able to:
 
@@ -27,9 +27,8 @@ Using Contact Form 7 Omnisend Add-On, you'll gain access to the Contact Form 7 e
 == REQUIREMENTS ==
 
 Omnisend for Contact Form 7 add-on requires you to install:
-- Contact Form 7 plugin
-- WooCommerce Wordpress plugin
-- Omnisend for WooCommerce plugin
+- [Contact Form 7 plugin](https://wordpress.org/plugins/contact-form-7/)
+- [Omnisend plugin](https://wordpress.org/plugins/omnisend/)
 
 == FAQ ==
 
@@ -39,8 +38,6 @@ Read [Installation instructions](https://support.omnisend.com/en/articles/861755
 = What are the technical requirements for the plugin installation? =
 * PHP 7.1+
 * WordPress 4.0.1+
-* WooCommerce plugin 6.0+
-* Omnisend for WooCommerce plugin 1.10.0 +
 * Omnisend account
 
 = How can I reach Omnisend support? =
@@ -63,6 +60,10 @@ Read Omnisend [Terms of Use](https://www.omnisend.com/privacy/)
 7. Convert more visitors with highly-targeted landing pages
 
 == Changelog ==
+
+= 1.1.1 =
+
+* Update plugin banner & text
 
 = 1.1.0 =
 
