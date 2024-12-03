@@ -3,7 +3,7 @@ Plugin Name: Omnisend for Contact Form 7 Add-On
 Contributors: omnisend
 Tags: Contact Form 7, form, email marketing, web tracking, subscriber collection
 Requires at least: 4.7.0
-Tested up to: 6.4
+Tested up to: 6.7
 Requires PHP: 7.1
 Stable tag: 1.1.2
 License: GPLv3 or later
