@@ -5,7 +5,7 @@ Tags: Contact Form 7, form, email marketing, web tracking, subscriber collection
 Requires at least: 4.7.0
 Tested up to: 6.7
 Requires PHP: 7.1
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -63,26 +63,24 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 7. Convert more visitors with highly-targeted landing pages
 
 == Changelog ==
-= 1.1.2 =
 
+= 1.1.3 =
+* Update tested WP version and security fixes
+
+= 1.1.2 =
 * Add Patchstack security vulnerability disclosure program link to faq
 
 = 1.1.1 =
-
 * Update plugin banner & text
 
 = 1.1.0 =
-
 * Update plugin to change dependency from Omnisend for Woo to Omnisend Wordpress.
 
 = 1.0.2 =
-
 * Update settings description text.
 
 = 1.0.1 =
-
 * Added send welcome email option.
 
 = 1.0.0 =
-
 * Initial release.
