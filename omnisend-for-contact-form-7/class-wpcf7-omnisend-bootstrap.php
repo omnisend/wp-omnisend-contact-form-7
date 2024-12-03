@@ -2,14 +2,14 @@
 /**
  * Omnisend Contact form 7 plugin
  *
- * Plugin Name: Omnisend for Contact Form 7
- * Description: A Contact Form 7 add-on to sync contacts with Omnisend. In collaboration with Omnisnnd for WooCommerce plugin it enables better customer tracking
+ * Plugin Name: Omnisend for Contact Form 7 Add-On
+ * Description: A Contact Form 7 add-on to sync contacts with Omnisend. In collaboration with Omnisend for WooCommerce plugin it enables better customer tracking
  * Version: 1.1.2
  * Author: Omnisend
  * Author URI: https://www.omnisend.com
  * Developer: Omnisend
  * Developer URI: https://developers.omnisend.com
- * Text Domain: omnisend-for-contact-forms-7
+ * Text Domain: omnisend-for-contact-form-7
  * ------------------------------------------------------------------------
  * Copyright 2023 Omnisend
  * License: GNU General Public License v3.0

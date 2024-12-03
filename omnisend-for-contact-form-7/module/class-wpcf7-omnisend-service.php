@@ -80,7 +80,7 @@ class WPCF7_Omnisend_Service extends WPCF7_Service {
 			printf(
 				'<p><a href="%1$s" class="button">%2$s</a></p>',
 				esc_url( $this->menu_page_url( 'action=setup' ) ),
-				esc_html( __( 'Setup integration', 'contact-form-7' ) )
+				esc_html( __( 'Setup integration', 'omnisend-for-contact-form-7' ) )
 			);
 		}
 	}
