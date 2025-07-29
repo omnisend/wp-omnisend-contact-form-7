@@ -4,7 +4,7 @@
  *
  * Plugin Name: Omnisend for Contact Form 7 Add-On
  * Description: A Contact Form 7 add-on to sync contacts with Omnisend. In collaboration with Omnisend for WooCommerce plugin it enables better customer tracking
- * Version: 1.1.4
+ * Version: 1.1.5
  * Author: Omnisend
  * Author URI: https://www.omnisend.com
  * Developer: Omnisend
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_action( 'wpcf7_init', array( 'WPCF7_Omnisend_Bootstrap', 'load' ), 5 );
 
 const WPCP7_OMNISEND_PLUGIN_NAME                     = 'Omnisend for Contact Form 7';
-const WPCP7_OMNISEND_PLUGIN_VERSION                  = '1.1.4';
+const WPCP7_OMNISEND_PLUGIN_VERSION                  = '1.1.5';
 const WPCP7_OMNISEND_SUPPORT_ARTICLE_LINK            = 'https://support.omnisend.com/en/articles/8672359-integration-with-contact-form-7';
 const WPCP7_OMNISEND_WELCOME_AUTOMATION_ARTICLE_LINK = 'https://support.omnisend.com/en/articles/1061818-welcome-email-automation';
 
