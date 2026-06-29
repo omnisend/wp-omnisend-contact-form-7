@@ -3,9 +3,9 @@ Plugin Name: Omnisend for Contact Form 7 Add-On
 Contributors: omnisend
 Tags: Contact Form 7, form, email marketing, web tracking, subscriber collection
 Requires at least: 4.7.0
-Tested up to: 6.9
-Requires PHP: 7.1
-Stable tag: 1.1.6
+Tested up to: 7.0
+Requires PHP: 7.4
+Stable tag: 1.1.7
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -36,7 +36,7 @@ Omnisend for Contact Form 7 add-on requires you to install:
 Read [Installation instructions](https://support.omnisend.com/en/articles/8617559-integration-with-contact-form-7)
 
 = What are the technical requirements for the plugin installation? =
-* PHP 7.1+
+* PHP 7.4+
 * WordPress 4.0.1+
 * Omnisend account
 
@@ -63,6 +63,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 7. Convert more visitors with highly-targeted landing pages
 
 == Changelog ==
+
+= 1.1.7 =
+* Updated for WordPress 7.0 compatibility.
+* Bumped minimum PHP requirement to 7.4.
 
 = 1.1.6 =
 * Tested up to WordPress 6.9
