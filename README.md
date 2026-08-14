@@ -2,7 +2,7 @@
 
 Connects Contact Form 7 submissions to Omnisend so form contacts can be synced for email/SMS marketing.
 
-Requires the [Omnisend](https://wordpress.org/plugins/omnisend/) plugin.
+Requires [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) and the [Omnisend](https://wordpress.org/plugins/omnisend/) plugin.
 
 WordPress plugin: https://wordpress.org/plugins/omnisend-for-contact-form-7/
 
