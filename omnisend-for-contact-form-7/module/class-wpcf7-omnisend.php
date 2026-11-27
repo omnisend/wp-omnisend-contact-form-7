@@ -44,10 +44,6 @@ class WPCF7_Omnisend {
 			return; // service is not active, no need for other hooks.
 		}
 
-		if ( ! class_exists( 'Omnisend\SDK\V1\Omnisend' ) ) {
-			return;
-		}
-
 		/** @var $contact_form WPCF7_ContactForm */
 		$form_id = $contact_form->id();
 
