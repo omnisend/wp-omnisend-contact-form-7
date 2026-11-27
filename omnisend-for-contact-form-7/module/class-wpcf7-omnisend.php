@@ -44,10 +44,6 @@ class WPCF7_Omnisend {
 			return; // service is not active, no need for other hooks.
 		}
 
-		if ( ! class_exists( 'Omnisend\SDK\V1\Omnisend' ) ) {
-			return;
-		}
-
 		/** @var $contact_form WPCF7_ContactForm */
 		$form_id = $contact_form->id();
 
@@ -70,8 +66,7 @@ class WPCF7_Omnisend {
 			$contact->set_email( $posted_data[ $email ] );
 		}
 
-		$is_welcome_email_enabled = $form_meta_data->is_send_welcome_email_enabled();
-		if ( ! empty( $is_welcome_email_enabled ) && $is_welcome_email_enabled !== '---' ) {
+		if ( $form_meta_data->is_send_welcome_email_enabled() ) {
 			$contact->set_welcome_email( true );
 		}
 
