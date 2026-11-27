@@ -41,9 +41,6 @@ class WPCF7_Omnisend_Service extends WPCF7_Service {
 		return array( 'email_marketing' );
 	}
 
-	public function icon() {
-	}
-
 	public function link() {
 		echo esc_html(
 			wpcf7_link(
@@ -51,10 +48,6 @@ class WPCF7_Omnisend_Service extends WPCF7_Service {
 				'omnisend.com'
 			)
 		);
-	}
-
-	public function load( $action = '' ) {
-		// add code here if we want to reach on action like "setup".
 	}
 
 	public function display( $action = '' ) {
