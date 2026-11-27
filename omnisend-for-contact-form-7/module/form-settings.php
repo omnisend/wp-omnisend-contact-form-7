@@ -21,7 +21,6 @@ $text_type_tags            = $post->scan_form_tags( array( 'basetype' => 'text' 
 $tel_type_tags             = $post->scan_form_tags( array( 'basetype' => 'tel' ) );
 $date_type_tags            = $post->scan_form_tags( array( 'basetype' => 'date' ) );
 $single_checkbox_type_tags = $post->scan_form_tags( array( 'basetype' => 'acceptance' ) );
-$all_tags                  = $post->scan_form_tags();
 ?>
 
 <style>
